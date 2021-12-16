@@ -1,2 +1,4 @@
-package ru.bmstu.messages;public class ResultMessage {
+package ru.bmstu.messages;
+
+public class ResultMessage {
 }
