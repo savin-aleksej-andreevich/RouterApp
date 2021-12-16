@@ -1,2 +1,4 @@
-package ru.bmstu.actors;public class ExecuteTestActor {
+package ru.bmstu.actors;
+
+public class ExecuteTestActor {
 }

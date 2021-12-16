@@ -1,2 +1,6 @@
-package ru.bmstu.actors;public class ResultStoreActor {
+package ru.bmstu.actors;
+
+import akka.actor.AbstractActor;
+
+public class ResultStoreActor extends AbstractActor {
 }
