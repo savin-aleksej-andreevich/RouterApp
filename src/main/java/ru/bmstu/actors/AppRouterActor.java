@@ -3,10 +3,14 @@ package ru.bmstu.actors;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
+import akka.japi.pf.ReceiveBuilder;
 import akka.routing.ActorRefRoutee;
 import akka.routing.RoundRobinRoutingLogic;
 import akka.routing.Routee;
 import akka.routing.Router;
+import ru.bmstu.messages.GetMessage;
+import ru.bmstu.messages.JsonMessage;
+import ru.bmstu.messages.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +33,16 @@ public class AppRouterActor extends AbstractActor {
 
     @Override
     public Receive createRecive () {
-
+        return ReceiveBuilder.create()
+                .match(GetMessage.class, message -> {storeActor.tell(message, sender());})
+                .match(JsonMessage.class, this::executeJSON)
+                .build();
     }
 
-    private void executeJSON() {
+    private void executeJSON(JsonMessage jsonMessage) {
+        for (Test test : jsonMessage.getTests()){
 
+        }
     }
 
 }
