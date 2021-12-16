@@ -3,6 +3,7 @@ package ru.bmstu.actors;
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 import ru.bmstu.messages.GetMessage;
+import ru.bmstu.messages.ResultMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,12 +17,13 @@ public class ResultStoreActor extends AbstractActor {
     public createReceive() {
         return ReceiveBuilder.create()
                 .match(GetMessage.class, this::getResult)
+                .match(StoreMessage.class, this::StoreResult)
     }
 
     private void getResult (GetMessage msg) {
         String id = msg.getPackageID();
         ArrayList<String> result = resultMap.get(id);
-        sender().tell(new ResultMessage (id, result), getContext().getParent());
+        sender().tell(new ResultMessage(id, result), getContext().getParent());
     }
 
 }
