@@ -34,10 +34,10 @@ public class ResultStoreActor extends AbstractActor {
             resultList = new ArrayList<>();
             resultList.add(result.getResult());
             resultMap.put(result.getId(), resultList);
-        }
+        } // если список результатов по id пустой, то создает список результатов (по этому id) и добавляет туда результатат
         else {
             resultList.add(result.getResult());
-        }
+        } // просто добавляет результат в список результатов по этому id
     }
 
 }
