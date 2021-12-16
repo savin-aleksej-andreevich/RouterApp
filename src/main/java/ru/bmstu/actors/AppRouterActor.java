@@ -14,7 +14,7 @@ import java.util.List;
 public class AppRouterActor extends AbstractActor {
     public static int EXECUTORS_COUNT = 5;
     private final Router router; //определяется router, который занимается рассылкой сообщений
-    private final ActorRef storeActor;
+    private final ActorRef storeActor; // определяется хранилище результатов
 
     public AppRouterActor() {
         storeActor = getContext().actorOf(Props.create(ResultStoreActor.class), "ResultStorage"); // создается ResultStorage
