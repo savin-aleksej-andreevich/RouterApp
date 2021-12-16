@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 import ru.bmstu.messages.GetMessage;
 import ru.bmstu.messages.ResultMessage;
+import ru.bmstu.messages.StoreMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,16 +15,29 @@ public class ResultStoreActor extends AbstractActor {
     private Map<String, ArrayList<String>> resultMap = new HashMap<>();
 
     @Override
-    public createReceive() {
+    public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(GetMessage.class, this::getResult)
-                .match(StoreMessage.class, this::StoreResult)
+                .match(StoreMessage.class, this::storeResult)
+                .build();
     }
 
     private void getResult (GetMessage msg) {
         String id = msg.getPackageID();
         ArrayList<String> result = resultMap.get(id);
         sender().tell(new ResultMessage(id, result), getContext().getParent());
+    }
+
+    private void storeResult (StoreMessage result) {
+        ArrayList<String> resultList = resultMap.get(result.getId());
+        if (resultList == null) {
+            resultList = new ArrayList<>();
+            resultList.add(result.getResult());
+            resultMap.put(result.getId(), resultList);
+        }
+        else {
+            resultList.add(result.getResult());
+        }
     }
 
 }

@@ -8,7 +8,7 @@ public class StoreMessage {
         this.id = id;
         this.result = result;
     }
-    
+
     public String getId() {
         return id;
     }
