@@ -24,7 +24,7 @@ public class AppRouterActor extends AbstractActor {
             getContext().watch(executor);
             routees.add(new ActorRefRoutee(executor));
         }
-        router = new Router(new RoundRobinRoutingLogic(), routees);
+        router = new Router(new RoundRobinRoutingLogic(), routees); // создается router из routees
     }
 
     @Override
