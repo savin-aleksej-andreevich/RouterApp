@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AppRouterActor extends AbstractActor {
     public static int EXECUTORS_COUNT = 5;
-    private final Router router;
+    private final Router router; //определяется router, который занимается рассылкой сообщений
     private final ActorRef storeActor;
 
     public AppRouterActor() {
