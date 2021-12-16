@@ -18,7 +18,7 @@ public class AppRouterActor extends AbstractActor {
     public AppRouterActor() {
         storeActor = getContext().actorOf(Props.create(ResultStoreActor.class), "ResultStorage"); // создается ResultStorage
         List<Routee> routees = new ArrayList<>();
-        for (int i = 0; i < EXECUTORS_COUNT; i++) { //Создается 5 executor 
+        for (int i = 0; i < EXECUTORS_COUNT; i++) { //Создается 5 executor и 
             ActorRef executor = getContext().actorOf(Props.create(ExecuteTestActor.class));
             getContext().watch(executor);
             routees.add(new ActorRefRoutee(executor));
