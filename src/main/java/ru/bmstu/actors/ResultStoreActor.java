@@ -17,8 +17,8 @@ public class ResultStoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(GetMessage.class, this::getResult)
-                .match(StoreMessage.class, this::storeResult)
+                .match(GetMessage.class, this::getResult) // обработка сообщения (получить результат)
+                .match(StoreMessage.class, this::storeResult) // обработка сообщения (загрузить результат)
                 .build();
     }
 
