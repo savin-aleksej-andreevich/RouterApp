@@ -26,7 +26,7 @@ public class ResultStoreActor extends AbstractActor {
         String id = msg.getPackageID();
         ArrayList<String> result = resultMap.get(id);
         sender().tell(new ResultMessage(id, result), getContext().getParent());
-    }
+    } // возвращает результат по id
 
     private void storeResult (StoreMessage result) {
         ArrayList<String> resultList = resultMap.get(result.getId());
