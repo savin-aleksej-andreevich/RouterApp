@@ -3,7 +3,7 @@ package ru.bmstu.messages;
 import java.util.ArrayList;
 
 public class ExecutionMessage {
-    private final String packageID;
+    private final String packageId;
     private final String functionName;
     private final String jsScript;
     private final String expectedResult;
@@ -11,7 +11,7 @@ public class ExecutionMessage {
     private final ArrayList<Object> params;
 
     public ExecutionMessage (String packageID, String functionName, String jsScript, String expectedResult, String testName, ArrayList<Object> params) {
-        this.packageID = packageID;
+        this.packageId = packageID;
         this.functionName = functionName;
         this.jsScript = jsScript;
         this.expectedResult = expectedResult;
