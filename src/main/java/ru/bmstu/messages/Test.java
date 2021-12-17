@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class Test {
-    @JsonProperty("testName");
+    @JsonProperty("testName")
     private final String testName;
 
     @JsonProperty("expectedResult")
     private final String expectedResult;
 
     @JsonProperty("params")
-    private final Arraylist<Object> params;
+    private final ArrayList<Object> params;
 
     @JsonCreator
     public Test (
@@ -24,7 +24,7 @@ public class Test {
         this.params = params;
     }
 
-    @JsonProperty("testName");
+    @JsonProperty("testName")
     public String getTestName() {
         return testName;
     }
@@ -35,7 +35,7 @@ public class Test {
     }
 
 
-    public Arraylist<Object> getParams() {
+    public ArrayList<Object> getParams() {
         return params;
     }
 }
