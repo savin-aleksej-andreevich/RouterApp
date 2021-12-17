@@ -2,6 +2,7 @@ package ru.bmstu;
 
 import akka.actor.ActorRef;
 import akka.http.impl.engine.client.PoolConductor;
+import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import akka.util.Timeout;
@@ -9,6 +10,7 @@ import ru.bmstu.messages.GetMessage;
 
 import java.time.Duration;
 import java.util.concurrent.Future;
+import static akka.http.javadsl.server.Directives.*;
 
 public class MainHttp {
     private final ActorRef router;
@@ -20,7 +22,7 @@ public class MainHttp {
         return route {
             get(() -> parameter("pachageId", (id) -> {
                 Future<Object> result = Patterns.ask(router, new GetMessage(id), Timeout.create(Duration.ofSeconds(10)));
-                return CompleteOK
+                return CompleteOKWithFuture(result, Jackson.marshaller());
             })
         }
     }
