@@ -11,11 +11,11 @@ import akka.http.javadsl.model.RequestEntity;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import akka.util.Timeout;
-import static akka.http.javadsl.server.Directives.*;
 
 import ru.bmstu.messages.GetMessage;
-import bmstu.ru.messages.JsonMessage;
 import ru.bmstu.messages.JsonMessage;
+import ru.bmstu.messages.JsonMessage;
+import static akka.http.javadsl.server.Directives.*;
 
 public class MainHttp {
     private final ActorRef router;
@@ -25,7 +25,7 @@ public class MainHttp {
     }
     public Route createRoute () {
         return route (
-            get(() -> parameter("pachageId", (id) -> {
+            get(() -> parameter("packageId", (id) -> {
                 Future<Object> result = Patterns.ask(router, new GetMessage(id), Timeout.create(Duration.ofSeconds(10)));
                 return CompleteOKWithFuture(result, Jackson.marshaller());
             })),
@@ -36,6 +36,4 @@ public class MainHttp {
         );
     }
 
-    private Route CompleteOKWithFuture(Future<Object> result, Marshaller<Object, RequestEntity> marshaller) {
-    }
 }
