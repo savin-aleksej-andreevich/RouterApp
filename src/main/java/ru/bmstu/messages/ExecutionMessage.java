@@ -20,7 +20,7 @@ public class ExecutionMessage {
     }
 
     public String getPackageID() {
-        return packageID;
+        return packageId;
     }
 
     public String getFunctionName() {
