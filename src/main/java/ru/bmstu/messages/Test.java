@@ -34,7 +34,7 @@ public class Test {
         return expectedResult;
     }
 
-    @JsonProperty("params")
+
     public Arraylist<Object> getParams() {
         return params;
     }
